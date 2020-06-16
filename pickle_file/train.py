@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import pickle
-df = pd.read_csv('data/m14_merged.csv', index_col=0)
+df = pd.read_csv('https://raw.githubusercontent.com/siddharthzs/stress_management/master/m14_merged.csv', index_col=0)
 
 feats =   ['BVP_mean', 'BVP_std', 'EDA_phasic_mean', 'EDA_phasic_min', 'EDA_smna_min', 
            'EDA_tonic_mean', 'Resp_mean', 'Resp_std', 'TEMP_mean', 'TEMP_std', 'TEMP_slope', 'BVP_peak_freq', 'age', 'height', 'weight', 'label']  
