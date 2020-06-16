@@ -1,6 +1,9 @@
 import numpy as np
 import pickle
+import os
+from django.conf import settings
 
+print(os.path.join(settings.BASE_DIR,'api')) 
 def decisionTree(arr):
 
     arr = np.array(arr)
