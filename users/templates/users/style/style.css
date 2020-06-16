@@ -1,0 +1,147 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: cursive;
+
+}
+
+table{
+    padding: 75px 400px;
+}
+.logo 
+{
+    width: 200px;
+    height: 150px;
+    padding: 0px 0px;
+    position: relative;
+    
+}
+.loginbox
+{
+    width: 260px;
+    height: 420px;
+    background: rgba(0, 0, 0,0.8);
+    color: #ffffff;
+    top: 100%;
+    left: 50%;
+    box-sizing: border-box;
+    padding: 40px 30px;
+}
+.loginbox1
+{
+    width: 260px;
+    height: 420px;
+    background: #ffffff;
+    color: #ffffff;
+    top: 100%;
+    left: 50%;
+    box-sizing: border-box;
+    padding: 70px 30px;
+    opacity: 0.8;
+}
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+.loginbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.loginbox input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.loginbox input[type="text"], input[type="password"]
+{
+    border: none;
+    border-bottom:  1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    font-family: cursive;
+}
+.loginbox input[type="submit"]
+{
+    border: none;
+    outline:  none;
+    height: 40px;
+    background: #e00d18;
+    border-radius: 10%;
+    color: #fff;
+    font-size: 18px;
+    font-family: cursive;
+}
+.loginbox input[type="submit"]:hover{
+    cursor: pointer;
+    background: #ffffff;
+    color: #000;
+}
+.loginbox a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+}
+.loginbox a:hover{
+    color: #e00d18;
+}
+
+
+
+
+.container
+{
+    text-align: center;
+    position: relative;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.container span
+{
+    color:#e00d18;
+    text-transform: uppercase;
+    display: block;
+}
+.text1
+{
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    position: relative;
+    animation: text 3s 1;
+    font-family: cursive;
+}
+.text2
+{
+    font-size: 16px;
+    font-weight: 700;
+    font-family: cursive;
+}
+@keyframes text
+{
+    0%
+    {
+        color: black;
+        margin-bottom: -40px;
+    }
+    30%
+    {
+        letter-spacing: 8px;
+        margin-bottom: -40px;
+    }
+    85%
+    {
+        letter-spacing: 1px;
+        margin-bottom: -40px;
+    }
+}

@@ -1,0 +1,234 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: cursive;
+            background-color: #f5f1d7;
+            background-image:url("{% static 'images/bgred1.jpg' %}");
+            overflow: hidden;
+        }
+
+        .main-container{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: center;
+        }
+
+        .inner{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: center;
+            min-width: 500px;
+            width: 100%;
+            max-width: 520px;
+            height: 100vh;
+            vertical-align: middle;
+            
+        }
+        .logo 
+        {
+            width: 200px;
+            height: 150px;
+            padding: 0px 0px;
+            position: relative;
+        }
+
+
+        .loginbox
+        {
+            width: 260px;
+            background: rgba(0, 0, 0,0.8);
+            color: #ffffff;
+            box-sizing: border-box;
+            padding: 40px 30px;
+            padding-bottom: 60px;
+        }
+
+
+        .brandbox
+        {  
+            width: 260px;
+            background: #ffffff;
+            color: #ffffff;
+            box-sizing: border-box;
+            padding: 70px 30px;
+            opacity: 0.8;
+            padding-bottom: 60px;
+        }
+
+        h1{
+            margin: 0;
+            padding: 0 0 20px;
+            text-align: center;
+            font-size: 22px;
+        }
+
+
+        .loginbox p{
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+        }
+
+
+        .loginbox input{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+
+        .loginbox input[type="text"], input[type="password"]
+        {
+            border: none;
+            border-bottom:  1px solid #fff;
+            background: transparent;
+            outline: none;
+            height: 40px;
+            color: #fff;
+            font-size: 16px;
+            font-family: cursive;
+        }
+
+
+        .loginbox input[type="submit"]
+        {
+            border: none;
+            outline:  none;
+            height: 40px;
+            background: #e00d18;
+            border-radius: 10%;
+            color: #fff;
+            font-size: 18px;
+            font-family: cursive;
+        }
+
+
+        .loginbox input[type="submit"]:hover{
+            cursor: pointer;
+            background: #ffffff;
+            color: #000;
+        }
+
+
+        .loginbox a{
+            text-decoration: none;
+            font-size: 14px;
+            color: #fff;
+        }
+
+
+        .loginbox a:hover{
+            color: #e00d18;
+        }
+
+
+
+
+        .container
+        {
+            text-align: center;
+            position: relative;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .container span
+        {
+            color:#e00d18;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .text1
+        {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            position: relative;
+            animation: text 3s 1;
+            font-family: cursive;
+        }
+
+        .text2
+        {
+            font-size: 16px;
+            font-weight: 700;
+            font-family: cursive;
+        }
+
+
+        @keyframes text
+        {
+            0%
+            {
+                color: black;
+                margin-bottom: -40px;
+            }
+            30%
+            {
+                letter-spacing: 8px;
+                margin-bottom: -40px;
+            }
+            85%
+            {
+                letter-spacing: 1px;
+                margin-bottom: -40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        {% if message %}
+        <small style="color: black;"> {{ message }}</small>
+        {% endif %}
+        <div class="inner">
+            <div class="brandbox">
+                <img src="{% static 'images/heart.png' %}" class="logo">
+                <div class="container">
+                    <span class="text1">virtusa</span>
+                    <span class="text2">health center</span>
+                </div>
+            </div>
+            <div class="loginbox">
+                
+                <h1>Login Here</h1>
+        
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <p style="margin-top: 20px;">Username</p>
+                    <small style="color: red;">{% if form.username.errors %} Invalid username or already taken. {% endif %}</small>
+                    {{ form.username }}
+                    <p>Password</p>
+                    {{ form.password1 }}
+                    <small style="color: red;">{{ form.password1.errors }}</small>
+                    <p>Confirm Password</p>
+                    <small style="color: red;"> {% if form.password2.errors %} Password fields didn't match.{% endif %}</small>
+                    {{ form.password2 }}
+                    <input type="submit" name="submit" value="Create Account">
+                </form>
+            </div>
+        </div>
+    </div>
+  
+
+    <script>
+        var username_input = document.getElementById('id_username');
+        username_input.setAttribute("autocomplete","off");
+    </script>
+</body>
+</html>
+	
