@@ -24,10 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'kr4^vugyx(a+*h0qj3i=50wh)45ek4)r6p955gck583gs__1l5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ['stressdetectionapp.herokuapp.com', "localhost", "127.0.0.1",'*']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*','stressdetectionapp.herokuapp.com']
 
 
 # Application definition
