@@ -1,0 +1,1 @@
+web: gunicorn stress_detection.wsgi
