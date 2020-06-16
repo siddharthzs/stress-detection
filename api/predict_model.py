@@ -1,12 +1,13 @@
 import numpy as np
-import pickle
+from joblib import load
 
 
 def decisionTree(arr):
 
     arr = np.array(arr)
-    file = open('pickle_file/decisionTree_model.sav','rb')
-    model = pickle.load(file)
+    # file = open('templates/pickle_file/decisionTree_model.sav','rb')
+    # model = pickle.load(file)
+    model = load('templates/pickle_file/decisionTree_model.pkl')
     result = model.predict(arr.reshape(1,-1)).flatten()
     prob = model.predict_proba(arr.reshape(1,-1)).flatten()
     return result, prob
@@ -15,7 +16,9 @@ def decisionTree(arr):
 def gradBoost(arr):
 
     arr = np.array(arr)
-    model = pickle.load(open('pickle_file/gradBoost_model.sav','rb'))
+    # model = pickle.load(open('templates/pickle_file/gradBoost_model.sav','rb'))
+    model = load('templates/pickle_file/gradBoost_model.pkl')
+
     result = model.predict(arr.reshape(1,-1)).flatten()
     prob = model.predict_proba(arr.reshape(1,-1)).flatten()
     return result, prob
@@ -25,7 +28,9 @@ def gradBoost(arr):
 def randomForest(arr):
 
     arr = np.array(arr)
-    model = pickle.load(open('pickle_file/randomForest_model.sav','rb'))
+    # model = pickle.load(open('templates/pickle_file/randomForest_model.sav','rb'))
+    model = load('templates/pickle_file/randomForest_model.pkl')
+
     result = model.predict(arr.reshape(1,-1)).flatten()
     prob = model.predict_proba(arr.reshape(1,-1)).flatten()
     return result, prob
@@ -33,7 +38,7 @@ def randomForest(arr):
 
 def get_one_predict(id):
 
-    data = np.genfromtxt('pickle_file/testcase/testcase20.csv',delimiter=',')
+    data = np.genfromtxt('templates/pickle_file/testcase20.csv',delimiter=',')
     re1, prob1 = decisionTree(data[id])
     re2, prob2 = gradBoost(data[id])
     re3, prob3 = randomForest(data[id])

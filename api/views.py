@@ -41,17 +41,17 @@ def apiModel(request,token):
         return Response("Invalid Data!!")
 
 
-    try:
-        all_result1 = predict_model.decisionTree(arr)
-        all_result2 = predict_model.randomForest(arr)
-        all_result3 = predict_model.gradBoost(arr)
-        
-        for i in range(3):
-            all_result1[1][i] = round(all_result1[1][i],4)
-            all_result2[1][i] = round(all_result2[1][i],4)
-            all_result3[1][i] = round(all_result3[1][i],4)
-    except:
-        return Response("something went wrong!!")
+    # try:
+    all_result1 = predict_model.decisionTree(arr)
+    all_result2 = predict_model.randomForest(arr)
+    all_result3 = predict_model.gradBoost(arr)
+    
+    for i in range(3):
+        all_result1[1][i] = round(all_result1[1][i],4)
+        all_result2[1][i] = round(all_result2[1][i],4)
+        all_result3[1][i] = round(all_result3[1][i],4)
+    # except:
+    #     return Response("something went wrong!!")
 
     re = {0 : 'amusement', 1: 'baseline', 2: 'stress'}
     re = re[all_result2[0][0]]
