@@ -1,38 +1,68 @@
 import numpy as np
-from joblib import load
+import pandas as pd
+
+
+df = pd.read_csv('https://raw.githubusercontent.com/siddharthzs/stress_management/master/m14_merged.csv', index_col=0)
+# df = pd.read_csv('data/m14_merged.csv')
+
+feats =   ['BVP_mean', 'BVP_std', 'EDA_phasic_mean', 'EDA_phasic_min', 'EDA_smna_min', 
+           'EDA_tonic_mean', 'Resp_mean', 'Resp_std', 'TEMP_mean', 'TEMP_std', 'TEMP_slope', 'BVP_peak_freq', 'age', 'height', 'weight', 'label']  
+
+df2 = df[feats]
+X = df2.drop('label', axis=1).values
+y = df2['label'].values
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)  
+
+
+from sklearn import tree
+decisionTree_model = tree.DecisionTreeClassifier()
+decisionTree_model.fit(X_train,y_train)
+
+from sklearn.ensemble import RandomForestClassifier
+randomForest_model = RandomForestClassifier(n_estimators=40)#doubt 
+randomForest_model.fit(X_train,y_train)
+
+from sklearn.ensemble import GradientBoostingClassifier
+gradBoost_model = GradientBoostingClassifier(random_state=0) 
+gradBoost_model.fit(X_train,y_train)
 
 
 def decisionTree(arr):
+    global decisionTree_model
 
     arr = np.array(arr)
     # file = open('templates/pickle_file/decisionTree_model.sav','rb')
     # model = pickle.load(file)
-    model = load('templates/pickle_file/decisionTree_model.pkl')
-    result = model.predict(arr.reshape(1,-1)).flatten()
-    prob = model.predict_proba(arr.reshape(1,-1)).flatten()
+    # model = load('templates/pickle_file/decisionTree_model.pkl')
+    result = decisionTree_model.predict(arr.reshape(1,-1)).flatten()
+    prob = decisionTree_model.predict_proba(arr.reshape(1,-1)).flatten()
     return result, prob
 
 
 def gradBoost(arr):
-
+    global gradBoost_model
     arr = np.array(arr)
     # model = pickle.load(open('templates/pickle_file/gradBoost_model.sav','rb'))
-    model = load('templates/pickle_file/gradBoost_model.pkl')
+    # model = load('templates/pickle_file/gradBoost_model.pkl')
 
-    result = model.predict(arr.reshape(1,-1)).flatten()
-    prob = model.predict_proba(arr.reshape(1,-1)).flatten()
+    result = gradBoost_model.predict(arr.reshape(1,-1)).flatten()
+    prob = gradBoost_model.predict_proba(arr.reshape(1,-1)).flatten()
     return result, prob
 
 
 
 def randomForest(arr):
+    global randomForest_model
 
     arr = np.array(arr)
     # model = pickle.load(open('templates/pickle_file/randomForest_model.sav','rb'))
-    model = load('templates/pickle_file/randomForest_model.pkl')
+    # model = load('templates/pickle_file/randomForest_model.pkl')
 
-    result = model.predict(arr.reshape(1,-1)).flatten()
-    prob = model.predict_proba(arr.reshape(1,-1)).flatten()
+    result = randomForest_model.predict(arr.reshape(1,-1)).flatten()
+    prob = randomForest_model.predict_proba(arr.reshape(1,-1)).flatten()
     return result, prob
 
 
