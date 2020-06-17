@@ -57,24 +57,3 @@ model.fit(X_train,y_train)
 # pickle.dump(model, open(filename, 'wb'))
 joblib.dump(model, 'randomForest_model.pkl')
 
-
-
-
-
-# {
-#     "BVP_mean": -0.181673262,
-#     "BVP_std": 107.648359,
-#     "EDA_phasic_mean": 1.824289,
-#     "EDA_phasic_min": 0.367977083,
-#     "EDA_smna_min": 5.22965803e-08,
-#     "EDA_tonic_mean": 1.23216412,
-#     "Resp_mean": 0.148183977,
-#     "Resp_std": 2.93561681,
-#     "TEMP_mean": 35.8170909,
-#     "TEMP_std": 0.0126739141,
-#     "TEMP_slope": -0.000169059802,
-#     "BVP_peak_freq": 0.13566987,
-#     "age": 27.0,
-#     "height": 175.0,
-#     "weight": 80.0
-# }
