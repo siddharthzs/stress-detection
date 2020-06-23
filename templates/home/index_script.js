@@ -154,6 +154,7 @@ var visible = 0;
                         bodyFontColor: '#666',
                         bodySpacing: 4,
 
+
                     },
                     response: true,
                     scales: {
@@ -179,7 +180,6 @@ var visible = 0;
                                 fontColor: "#9a9a9a",
                                 beginAtZero: true,
                                 min: 0
-
                             }
                         }]
                     },
