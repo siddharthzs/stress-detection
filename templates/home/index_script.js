@@ -13,17 +13,6 @@ input.addEventListener("keyup", function(event) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 var visible = 0;
         var allData;
         const eda_xlabel = [];
@@ -117,13 +106,12 @@ var visible = 0;
 
 
             var myChart = new Chart(ctx, {
-
                 type: 'line',
                 responsive: true,
                 data: {
-                    labels: eda_xlabel,
+                    labels: eda_xlabel.map(function(item) { return Math.floor(item/700) }), //changes to convert sequence into seconds
                     datasets: [{
-                        label: 'Electrodermal Activity',
+                        label: 'Electrodermal Activity Chart',
                         data: eda_ylabel,
                         spanGaps: true,
                         fill: true,
@@ -154,37 +142,58 @@ var visible = 0;
                         bodyFontColor: '#666',
                         bodySpacing: 4,
 
-
                     },
                     response: true,
+
                     scales: {
                         yAxes: [{
+                            display: true,
                             barPercentage: 1.6,
                             gridLines: {
                                 drawBorder: false,
                                 color: 'rgba(29,140,248,0.0)',
                             },
                             ticks: {
+                                maxTicksLimit: 6, //changes to put a restriction on number of ticks (interval) on Y-axis
                                 fontColor: "#9a9a9a"
-                            }
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Value in μS (Microsiemens)' //changes to put a label on Y-axis
+                              },
+
+
+
                         }],
 
                         xAxes: [{
+                            display: true,
                             barPercentage: 1.6,
                             gridLines: {
                                 drawBorder: false,
                                 color: 'rgba(225,78,202,0.1)',
                             },
-                            ticks: {
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Time (in Seconds)',  //changes to put a label on X-axis
 
+                              },
+
+      
+                            ticks: {
+                                maxTicksLimit: 30,  //changes to put a restriction on number of ticks (interval) on X-axis
                                 fontColor: "#9a9a9a",
-                                beginAtZero: true,
+                                beginAtZero: false,
                                 min: 0
                             }
+                            
+                            
                         }]
                     },
                     legend: {
                         display: true,
+                        //<!-- display: true, -->
+                        
                         fontColor: "#9a9a9a",
                         labels: {
                             fontColor: "#9a9a9a",

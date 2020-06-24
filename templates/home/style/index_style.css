@@ -146,8 +146,8 @@ nav .menu span {
 .grid-item3 {
     grid-column-start: 1;
     grid-column-end: 5;
-    grid-row-start: 3;
-    grid-row-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
     box-shadow: 0 0 5px 0px #888;
 
 }
@@ -155,8 +155,8 @@ nav .menu span {
 .grid-item4 {
     grid-column-start: 1;
     grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
     /* box-shadow: 0 0 5px 0px #888; */
     margin-bottom: 25px;
     margin-top: 15px;
