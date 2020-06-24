@@ -176,6 +176,7 @@ var visible = 0;
                             scaleLabel: {
                                 display: true,
                                 labelString: 'Time (in Seconds)',  //changes to put a label on X-axis
+                         
 
                               },
 
@@ -240,7 +241,14 @@ var visible = 0;
                         },
                         ticks: {
                             fontColor: "#9e9e9e"
-                        }
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Beats per second (BVP)',  //changes to put a label on X-axis
+                            
+
+                          },
+
                     }],
 
                     xAxes: [{
@@ -249,8 +257,16 @@ var visible = 0;
                             display: false,
                         },
                         ticks: {
-                            fontColor: "#9e9e9e"
-                        }
+                            fontColor: "#9e9e9e",
+                            maxTicksLimit: 30,
+                        },
+                        scaleLabel: {
+                            display: true, 
+                            labelString: 'Time (in Seconds)',  //changes to put a label on X-axis 
+                       
+
+                          }
+
                     }]
                 }
             };
@@ -266,7 +282,7 @@ var visible = 0;
 
                 type: 'line',
                 data: {
-                    labels: bvp_xlabel,
+                    labels: bvp_xlabel.map(function(item) { return Math.floor(item/700) }),
                     datasets: [{
                         label: 'Blood Volume Pulse',
                         spanGaps: true,
