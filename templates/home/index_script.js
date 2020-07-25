@@ -357,6 +357,11 @@ var visible = 0;
                         }
 
                     },
+                    tooltips:{
+                        enabled: false,
+                        showTooltips: false,
+                    },
+                    events:[]
                 }
             });
 
