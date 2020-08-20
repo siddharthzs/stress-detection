@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtusa Health</title>
+    <title>ZuFu Health</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'home/style/index_style.css'%}">
@@ -14,10 +14,10 @@
 <body>
     <nav>
         <div class="brand">
-            <h1> Virtusa Health </h1>
+            <h1> ZuFu Health </h1>
         </div>
         <div class="menu">
-            <span class="inputbox">Testcase Number: <input id="mytext" type="text"></span>
+            <span class="inputbox">Testcase Number: <input id="mytext" type="text" placeholder="enter a number to test"></span>
             <span id="myBtnpre" onclick="predict()"><i class="fa fa-search"></i></span>
         </div>
         <div class="secret_key">
@@ -28,6 +28,19 @@
             </div>
         </div>
     </nav>
+    <style>
+        #notification{
+            display: none;
+            background-color: rgba(255,0,0,0.7);
+            color: white;
+            font-size: 15px;
+            padding: 4px 8px;
+            text-align: center;
+        }
+    </style>
+    <div id="notification">
+        <span>Please use desktop or laptop to view our website. Mobile view is not supported!</span>
+    </div>
 
     <a href="#apipricebox" class="apilink"><button>Buy API</button></a>
     <p id="result" style="visibility: hidden;"></p>
@@ -75,7 +88,7 @@
     </div>
     <div class="inner2" id="apipricebox">
         <div class="apidemo">
-            <div class="heading"><span>Virtusa Pricing</span></div>
+            <div class="heading"><span>ZuFu Pricing</span></div>
         </div>
         <div class="api-main">
             <div class="api-main-inner">
@@ -119,7 +132,12 @@
         </div>
     </div>
     <div class="inner2">
-        <footer> That's all, folks! :) Have a Good Day</footer>
+        <footer> That's all, folks! :) &nbsp;
+            <a href="https://github.com/siddharthzs" id="github"><i class="fa fa-github" aria-hidden="true" style="color:white"></i></a> &nbsp;
+            <a href="https://linkedin.com/in/siddharthzs" id="linkedin"><i class="fa fa-linkedin-square" aria-hidden="true" style="color:#18679e"></i></a>&nbsp;
+            <a href="https://stackoverflow.com/users/10738923/siddhharth-choudhary" id="stackoverflow"><i class="fa fa-stack-overflow" aria-hidden="true" style="color:#f36f18"></i></a>&nbsp;
+            <a href="mailto:siddharthchoudhary.mail@gmail.com" id="mail"><i class="fa fa-envelope" aria-hidden="true" style="color:#007777"></i></a>
+         </footer>
     </div>
     </div>
     <script src="{% static 'home/index_script.js' %}"></script>
@@ -184,8 +202,11 @@
 
         async function predict() {
             var id = document.getElementById("mytext").value;
-            if (id == '')
-                id = 1;
+            if (id == ''){
+                alert("Input Box is Empty! Enter a number from 0 to 1179");
+                return;
+            }
+                
             var re = document.getElementById("result");
        
             var url = `https://stressdetectionapp.herokuapp.com/api/model/${id}/predict/{{token}}/`;
@@ -225,6 +246,13 @@ function showalert(){
 }
 
 
+window.onload = function() {
+  alert("Stress Detection From WEESAD DATASET\n 1. WEESAD DATASET : A test where 7 people were asked to wearing chest sensor and wrist sensor all day long and the sensor reading were stored in a pickle file as every sensor has different frequency which result in different lenth of column.\n 2. SearchBar is used to analysis the dataset. On entering a number between 1 to 1178, you will see BVP and EDA reading of a testcase over a period of 30second.\n 3. API Demonstration: Here You can see how our API works and test it.\n 4. To Access API url click on Buy API Button and choose Free Plan\n Contact: siddharth654choudhary@gmail.com ");
+};
+
+if(window.screen.availWidth < 550){
+            document.querySelector("#notification").style.display = "block";
+        }
     </script>
 </body>
 

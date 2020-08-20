@@ -53,6 +53,7 @@ nav .menu .inputbox input {
     outline: none;
     color: white;
     padding-left: 10px;
+    width: 100%;
 }
 
 nav .menu span {

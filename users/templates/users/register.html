@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtusa Health Center</title>
+    <title>ZuFu Health Center</title>
     <style>
         body{
             margin: 0;
@@ -191,6 +191,19 @@
     </style>
 </head>
 <body>
+<style>
+        #notification{
+            display: none;
+            background-color: rgba(255,0,0,0.7);
+            color: white;
+            font-size: 15px;
+            padding: 4px 8px;
+            text-align: center;
+        }
+    </style>
+    <div id="notification">
+        <span>Please use desktop or laptop to view our website. Mobile view is not supported!</span>
+    </div>
     <div class="main-container">
         {% if message %}
         <small style="color: black;"> {{ message }}</small>
@@ -198,7 +211,7 @@
         <div class="inner">
             <div class="brandbox">
                 <div class="container">
-                    <span class="text1">Virtusa</span>
+                    <span class="text1">ZuFu</span>
                     <span class="text2">health center</span>
                 </div>
             </div>
@@ -228,6 +241,10 @@
     <script>
         var username_input = document.getElementById('id_username');
         username_input.setAttribute("autocomplete","off");
+
+        if(window.screen.availWidth < 550){
+            document.querySelector("#notification").style.display = "block";
+        }
     </script>
 </body>
 </html>
