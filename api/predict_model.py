@@ -1,5 +1,10 @@
 import numpy as np
 import pandas as pd
+import multiprocessing 
+from sklearn.model_selection import train_test_split
+from sklearn import tree
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import GradientBoostingClassifier
 
 
 df = pd.read_csv('https://raw.githubusercontent.com/siddharthzs/stress_management/master/m14_merged.csv', index_col=0)
@@ -12,20 +17,20 @@ df2 = df[feats]
 X = df2.drop('label', axis=1).values
 y = df2['label'].values
 
-from sklearn.model_selection import train_test_split
+
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)  
 
 
-from sklearn import tree
+
 decisionTree_model = tree.DecisionTreeClassifier()
 decisionTree_model.fit(X_train,y_train)
 
-from sklearn.ensemble import RandomForestClassifier
-randomForest_model = RandomForestClassifier(n_estimators=40)#doubt 
+
+randomForest_model = RandomForestClassifier(n_estimators=40)
 randomForest_model.fit(X_train,y_train)
 
-from sklearn.ensemble import GradientBoostingClassifier
+
 gradBoost_model = GradientBoostingClassifier(random_state=0) 
 gradBoost_model.fit(X_train,y_train)
 
