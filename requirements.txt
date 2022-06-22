@@ -6,7 +6,7 @@ django-heroku==0.3.1
 djangorestframework==3.11.0
 gunicorn==20.0.4
 joblib==0.15.1
-numpy==1.18.5
+numpy==1.22.0
 pandas==1.0.4
 pickle-mixin==1.0.2
 psycopg2==2.8.5
